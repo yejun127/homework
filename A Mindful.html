@@ -8,7 +8,6 @@
         </head>
 
         <body>
-                <script src= "script.js" type="text/javascript" ></script>
 
 <!--heading-->
                 <h1 id="myHeading">My Blog</h1><!--header-->
@@ -21,7 +20,7 @@
                 </header>
 <!--blogs-->
 <article>
-  <h2>A Mindful Shift of Focus</h2>
+  <h2 id="blog_name">A Mindful Shift of Focus</h2>
   <h3>By Leo Babauta</h3>
   <p>Throughout the day, we get frustrated, irritated, angry.</p>
   <p>We are frustrated in traffic, when a loved one doesn't behave the way we like, when someone tells us we're wrong, when technology doesn't work the way we want, when dinner is ruined, among many other daily stresses.</p>
@@ -56,6 +55,18 @@
   <p>No, I think if there is abuse or injustice, we should compassionately try to correct these tragedies. But learning to deal with our frustrations, in the midst of all this, can actually help the situation. If we can't deal with our frustrations, then we're increasingly likely to act in anger and violence, and that isn't useful.</p>
   <p>There's another way: recognize the injustice, be mindful of your frustrations, appreciate life in the present moment to calm your frustrations... then compassionately engage with everyone else to work on righting the injustice. Have a love-driven dialogue with everyone else, rather than fear-based or anger-driven interactions. Stand up to abuse, but that doesn't mean throw a brick in anger.</p>
   <p>I don't have the answers, and my heart goes out to all who are grieving, afraid, hurt, feeling helpless, fed up, frustrated or angry. My only hope is that in the middle of all this sorrow, we can appreciate the gift of life that we've been given, and find love for our fellow human beings despite all their flaws and messiness.</p>
+  <br>
+  <h2>Comments</h2>
+  <form id="commentForm">
+    Name:<br>
+    <input type="text" name="name" placeholder="Your name" required>
+    <br>Message:<br>
+    <input type="text" name="message" placeholder="Write your comment here" required>
+    <br>
+    <input id="addComment" type="submit" />
+  </form>
+  <div id="list_of_comments"></div>
+  <script src="script.js"></script>
 </article>
                 <div class="footer">
                 <footer>

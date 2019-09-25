@@ -44,10 +44,11 @@ function addComment(list_of_comments, comment) {
 
 /* Populate with current Comment */
 
+let blogName = document.getElementById("blog_name").innerHTML;
 let commentDiv = document.getElementById("list_of_comments");
 let comments = [];
-if(localStorage.getItem("curComment")) {
-    comments = JSON.parse(localStorage.getItem("curComment"));
+if(localStorage.getItem(blogName)) {
+    comments = JSON.parse(localStorage.getItem(blogName));
     for(var i=0; i<comments.length; i++){
       commentDiv.innerHTML += "<p>"+comments[i].comment+"</p><br>";
     }
@@ -60,7 +61,7 @@ commentForm.addEventListener("submit", function(event) {
     let message = commentForm.elements.namedItem("message").value;
     let comment = new Comment(name, message);
     addComment(comments, comment);
-    localStorage.setItem("curComment", JSON.stringify(comments));
+    localStorage.setItem(blogName, JSON.stringify(comments));
 
     /*let commentDiv = document.getElementById("list_of_comments"); */
     let commentsHtml = "";
