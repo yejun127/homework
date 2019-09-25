@@ -4,41 +4,28 @@ Parameters: to, from, subject, message
 All parameters are strings
 Returns: Object with fields "to, from, subject, message".*/
 
-let getSubmission = (to, from, subject, message) => {
-    let submission = {to: to, from: from, subject: subject, message: message};
-    return submission;
-  }
+// let getSubmission = (to, from, subject, message) => {
+//     let submission = {to: to, from: from, subject: subject, message: message};
+//     return submission;
+// }
 
 
 /*Create a class with the following characteristics:*/
 
 class Comment {
   constructor(name, message) {
-    this.name = name;
-    this.message = message;
+    this.comment = name + ":" + message;
   }
   /* sets the name and message of the comment */
 
-
-  setName(name) {
-    this.name = name;
+  setComment(name, message) {
+    this.comment = name + ":" + message;
   }
-  /* sets the name instance variable */
 
-  getName() {
-    return this.name;
+  getComment(){
+    return this.comment;
   }
-  /* returns the name instance variable */
 
-
-  setMessage(message) {
-    this.message = message;
-  }
-  /* sets the message instance variable */
-
-  getMessage() {
-    return this.message;
-  }
 }
   /* returns the message instance variable */
 
@@ -51,15 +38,19 @@ AddComment should add comment to list_of_comments. It should add the new comment
 */
 
 function addComment(list_of_comments, comment) {
-    list_of_comments[list_of_comments.length] = comment
+    list_of_comments.push(comment);
     return list_of_comments
 }
 
 /* Populate with current Comment */
-let commentDiv = document.getElementById("list_of_comments");
 
-if (localStorage.curComment != null) {
-    commentDiv.innerHTML = localStorage.curComment;
+let commentDiv = document.getElementById("list_of_comments");
+let comments = [];
+if(localStorage.getItem("curComment")) {
+    comments = JSON.parse(localStorage.getItem("curComment"));
+    for(var i=0; i<comments.length; i++){
+      commentDiv.innerHTML += "<p>"+comments[i].comment+"</p><br>";
+    }
 }
 
 /* Run code on submit button push */
@@ -67,19 +58,17 @@ commentForm = document.getElementById("commentForm");
 commentForm.addEventListener("submit", function(event) {
     let name = commentForm.elements.namedItem("name").value;
     let message = commentForm.elements.namedItem("message").value;
-    console.log("name");
-
-    localStorage.curComment = name + ": " + message;
+    let comment = new Comment(name, message);
+    addComment(comments, comment);
+    localStorage.setItem("curComment", JSON.stringify(comments));
 
     /*let commentDiv = document.getElementById("list_of_comments"); */
-    commentDiv.innerHTML = localStorage.curComment;
+    let commentsHtml = "";
+    for(var i=0; i<comments.length; i++){
+      commentsHtml += "<p>"+comments[i].comment+"</p><br>";
+    }
+    commentDiv.innerHTML = commentsHtml;
     commentDiv.classList.add("highlight");
-
-    /* This stops the usual function of "submit" which is to send data to another server */
     event.preventDefault();
 })
 
-commentForm = document.getElementById("list_of_comments");
-commentForm.addEventListener("click", function(event) {
-    commentDiv = null;
-})
