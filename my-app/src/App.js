@@ -351,7 +351,7 @@ class ContactUs extends React.Component {
       errorfaults += 'Please enter your message.';
     }
 
-    this.setState({ errorfaults });
+    this.props.onUpdate(errorfaults);
 
     if (_.every([
       !!email,
@@ -359,6 +359,7 @@ class ContactUs extends React.Component {
       !!message,
     ])) {
       this.setState({ errorfaults: 'Your message has been sent!' });
+      this.props.onUpdate('Your message has been sent!');
       const feedbacks = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
       localStorage.setItem('contactSubmissions', JSON.stringify([...feedbacks, { email, subject, message }]));
     }
@@ -367,7 +368,6 @@ class ContactUs extends React.Component {
   render() {
     const { email, subject, message } = this.state;
     return (<div className="AboutUs">
-      <div id="contactDiv">{this.state.errorfaults}</div>
       <article>
         <h2>Contact Us</h2>
         <h3>Always welcome!</h3>
@@ -392,6 +392,14 @@ class ContactUs extends React.Component {
   }
 }
 
+class ContactMessage extends React.Component {
+  render() {
+    return (
+     <div id="contactDiv">{this.props.errorfaults}</div>
+    );
+  }
+}
+
 // This is the main Component that index.js is going to render. This is responsible for rendering the correct components for each given
 // Page
 class App extends React.Component {
@@ -400,8 +408,15 @@ class App extends React.Component {
     super(props)
     // here's the special sauce: window.location.pathname gives you the path of the current url outside of the domain.
     // For example, if your current url is "localhost:3000/page2", window.location.pathname will equal "/page2"
-    this.state = {'currentPage':  window.location.pathname }
+    this.state = {
+      'currentPage':  window.location.pathname,
+      errorfaults : "",
+    }
   }
+  onUpdate (errorfaults) {
+    this.setState({ errorfaults: errorfaults });
+    console.log("props : ", this.state.errorfaults);
+   }
 
   // This render function now looks at the current state (set by window.location.pathname), and renders the correct components
   render() {
@@ -431,8 +446,9 @@ class App extends React.Component {
     else if (this.state.currentPage === "/ContactUs") {
       return (
         <div>
+        <ContactMessage errorfaults={this.state.errorfaults} />
           <Header />
-          <ContactUs />
+          <ContactUs onUpdate={this.onUpdate.bind(this)} />
           <Footer />
         </div>
       )
