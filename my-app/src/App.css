@@ -155,3 +155,7 @@ input[oninvalid] {
   font-size: 18px;
   font-family: "Georgia";
 }
+
+.comment_list {
+  margin-bottom: 100px;
+}

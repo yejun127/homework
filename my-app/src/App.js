@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import _ from 'lodash';
 
 class Header extends React.Component {
   render() {
@@ -50,32 +51,9 @@ class AboutUs extends React.Component {
           <h2>About Us</h2>
           <p>In 2017, I graduated from New York University with a Bachelor degree in Art History and Quantitative Economics. Having worked at a number of art scenes ranging from Gagosian to Artnet, I decided to shift my career from advocating for the voice of artists to advocating for the voice of users. My interest in HCI is a natural collision between my analytical skills and my aesthetic sense. </p>
           <p>Currently I'm studying for my Master’s in Information Management and Systems (MIMS) with a focus on Human-Computer Interaction at UC Berkeley School of Information. While I am passionate about how technology can help solve problems for people, I am particularly interested in defining problems, and translating the understanding about people's thoughts, emotions, behavior into the design of effective digital interaction. I hope to bridge the gap between human and technology by applying user-centered perspective and ultimately craft experience that truly connects with people. </p>
-          <p>As an enthusiastic world wanderer, I have traveled to 23 countries🌍 in the world and learned 4 languages. I also enjoy gallery hopping🎨, food hunting🍕, photography📷, flower arrangement💐 and have a deep love for puppies🐶. </p>
+          <p>As an enthusiastic world wanderer, I have traveled to 23 countries in the world and learned 4 languages. I also enjoy gallery hopping, food hunting, photography, flower arrangement and have a deep love for puppies. </p>
           </article>
       </div>
-    )
-  }
-}
-
-class ContactUs extends React.Component {
-  render() {
-    return (
-    <div className="AboutUs">
-      <article>
-      <h2>Contact Us</h2>
-      <h3>Always welcome!</h3>
-      <p>If you're looking for designers, have any questions about my projects, or just want to say hi, drop me a line! I'm always open to talk.</p>
-          <form id="contactForm" onsubmit="formXX(event)">
-            From:<br />
-            <input type="text" name="from" placeholder="Email"></input><br />
-            Subject:<br />
-            <input type="text" name="subject" placeholder="Subject" ></input><br />
-            Message:<br />
-            <input type="text" name="message" placeholder="Your message"></input><br />
-            <input type="submit" value="Submit"></input>
-          </form>
-      </article>
-    </div>
     )
   }
 }
@@ -105,9 +83,10 @@ class BlogPost1 extends React.Component {
       <p>8. <i>Small Starts, Quick Rewards</i>.<br />Create a system where you have to do short tasks (just 10 minutes) and you get a small reward at the end of it. For example, I just need to write for 10 minutes, then I get to have my first coffee of the day. Or I clear my email inbox for 10 minutes, and then I get to check my favorite sites for 5 minutes. Don't let yourself have the reward unless you do the task! The smaller the task, the better, so you won't delay starting.</p>
       '<p>OK, these are eight experiments, but you might think of others, like the Seinfeld Method or the Pomodoro Technique. All that matters is that you try the experiments, and note the results. At the end of each weekly experiment, write a brief review of how it went. Rate your productivity on a scale of 10. Then try another experiment.</p>'
       <p>At the end of these, you'll have tried a bunch of great methods, and figured out what helps you most. You might combine methods, or use different ones at different times. And maybe after all of this, you'll have a trust in yourself that's so strong, you don't need any methods!</p>
+      <CommentForm  blogName={"BlogPost1"} />
     </article>
     </div>
-    )
+      )
   }
 }
 
@@ -151,6 +130,7 @@ class BlogPost2 extends React.Component {
       <p>No, I think if there is abuse or injustice, we should compassionately try to correct these tragedies. But learning to deal with our frustrations, in the midst of all this, can actually help the situation. If we can't deal with our frustrations, then we're increasingly likely to act in anger and violence, and that isn't useful.</p>'
       <p>There's another way: recognize the injustice, be mindful of your frustrations, appreciate life in the present moment to calm your frustrations... then compassionately engage with everyone else to work on righting the injustice. Have a love-driven dialogue with everyone else, rather than fear-based or anger-driven interactions. Stand up to abuse, but that doesn't mean throw a brick in anger.</p>
       <p>I don't have the answers, and my heart goes out to all who are grieving, afraid, hurt, feeling helpless, fed up, frustrated or angry. My only hope is that in the middle of all this sorrow, we can appreciate the gift of life that we've been given, and find love for our fellow human beings despite all their flaws and messiness.</p>'
+      <CommentForm  blogName={"BlogPost2"} />
     '</article>
     </div>
     )
@@ -182,6 +162,7 @@ class BlogPost3 extends React.Component {
       That might seem like a lot, but after awhile, this all becomes second nature. Navigate. Use but don't rely on a map. Walk around a lot, but know where you are when you walk around. Form a mental map and make it better and better as you walk around.</p>'
       <p>I find that people can develop this with practice, and it's also something to teach your kids as you travel. Let them navigate even if it takes a bit longer -- it's a great skill for them to learn. If you have a spouse, take turns navigating so one person doesn't have an underdeveloped sense of direction.</p>'
       <p>In my experience, this is a key skill for traveling, and it makes every trip so much more fun when you can really figure out a city and start to understand it like a local does. Happy wandering, my friends.</p>'
+      <CommentForm  blogName={"BlogPost3"} />
     '</article>
     </div>
     )
@@ -218,6 +199,7 @@ class BlogPost4 extends React.Component {
       <p><i>- Anyone can write, and everyone should.</i><br />You don't have to be James Joyce to write. Even if you never want to be a pro, you can write in a journal every day, or write letters to a loved one (and send them or not). You don't have to be polished. And it's a great practice, to learn to focus and overcome fears and procrastination, and learn to allow the words to flow from the mind.</p>'
       <p><i>- Start where you are.</i><br />Whether you've been writing for a few years or you're just starting out, whether you have a talent for words or you struggle, that is the place to start. It doesn't matter where you are, or how you compare to others -- just write, working with whatever you're struggling with. You'll get better over the course of time, and more comfortable with what you're doing.</p>
       <p><i>- You get good by doing it a lot, and caring.</i><br />You'll never be perfect at it -- goodness knows I'm far from perfect -- but the only way to get better is to practice. And to care about what you're doing. Do that every day, and every step of the struggle will be an amazing one.</p>'
+      <CommentForm  blogName={"BlogPost4"} />
     </article>
       </div>
     )
@@ -249,12 +231,12 @@ class BlogPost5 extends React.Component {
       <p>5. <i>Do it in little bits.</i><br />Yes, uncertainty and discomfort can be difficult. So don't kill yourself trying to master them... just do it in small doses. Work on the task for just a few minutes, then walk around and take a break. Then sit down and focus again, relaxing into the discomfort and uncertainty. Repeat.</p>'
       <p>With this kind of mindful practice, you're training yourself to get good at discomfort and uncertainty. This is a wonderful skill to get good at!</p>'
       <p>And in the end, not only will you be facing down the most difficult aspect of productivity, you'll be doing something good for others in the process.</p>'
+      <CommentForm  blogName={"BlogPost5"} />
     </article>
     </div>
     )
   }
 }
-
 
 
 class Footer extends React.Component {
@@ -268,6 +250,145 @@ class Footer extends React.Component {
       </ul>
       </div>
     )
+  }
+}
+
+class CommentForm extends React.Component {
+   constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      comment: '',
+      preComments: JSON.parse(localStorage.getItem(this.props.blogName)||'[]'),
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+    handleChange(event) {
+      this.setState({[event.target.name]: event.target.value});
+    }
+    handleSubmit(event) {
+      event.preventDefault();
+      var preComments = JSON.parse(localStorage.getItem(this.props.blogName)||'[]');
+      preComments.push({name: this.state.name, comment: this.state.comment});
+      console.log("1 : ",preComments);
+      this.setState({preComments:  preComments});
+      localStorage.setItem(this.props.blogName, JSON.stringify(preComments));
+      console.log("2 : ",localStorage.getItem(this.props.blogName));
+    }
+    render() {
+      return (
+      <div>
+        <form id="commentForm" onSubmit={this.handleSubmit}>
+           <div id="list_of_comments"></div>
+           <label>
+              Name:
+           <input type="text" value={this.state.name} name="name" onChange={this.handleChange} />
+           </label>
+           <label>
+              Comment:
+           <input type="text" value={this.state.comment} name="comment" onChange={this.handleChange} />
+           </label>
+           <input type="submit" value="Submit" />
+        </form>
+        <Comments comments={this.state.preComments} />
+      </div>
+  );
+ }
+}
+
+class Comments extends React.Component {
+    render() {
+      return (
+      <div class="comment_list">
+          {this.props.comments.map((comment,i) => (<p key={i}>{comment.name} : {comment.comment}<br></br></p>))}
+      </div>
+      );
+    }
+}
+
+class ContactUs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      message: '',
+      subject: '',
+      errorfaults: '',
+    };
+    this.handleChangeEmail = this.handleChangeEmail.bind(this);
+    this.handleChangeSubject = this.handleChangeSubject.bind(this);
+    this.handleChangeMessage = this.handleChangeMessage.bind(this);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChangeEmail(event) {
+    this.setState({ email: event.target.value.trim() });
+  }
+
+  handleChangeSubject(event) {
+    this.setState({ subject: event.target.value.trim() });
+  }
+
+  handleChangeMessage(event) {
+    this.setState({ message: event.target.value.trim() });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const { email, subject, message } = this.state;
+    let errorfaults = '';
+    if (!email) {
+      errorfaults += 'Please enter your email.';
+    }
+
+    if (!subject) {
+      errorfaults += 'Please enter your subject.';
+    }
+
+    if (!message) {
+      errorfaults += 'Please enter your message.';
+    }
+
+    this.setState({ errorfaults });
+
+    if (_.every([
+      !!email,
+      !!subject,
+      !!message,
+    ])) {
+      this.setState({ errorfaults: 'Your message has been sent!' });
+      const feedbacks = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+      localStorage.setItem('contactSubmissions', JSON.stringify([...feedbacks, { email, subject, message }]));
+    }
+  }
+
+  render() {
+    const { email, subject, message } = this.state;
+    return (<div className="AboutUs">
+      <div id="contactDiv">{this.state.errorfaults}</div>
+      <article>
+        <h2>Contact Us</h2>
+        <h3>Always welcome!</h3>
+        <p>If you're looking for designers, have any questions about my projects, or just want to say hi, drop me a line! I'm always open to talk.</p>
+        <form id="contactForm" onSubmit={this.handleSubmit}>
+          From:
+          <br />
+          <input type="text" name="from" placeholder="Email" value={email} onChange={this.handleChangeEmail} />
+          <br />
+          Subject:
+          <br />
+          <input type="text" name="subject" placeholder="Subject" value={subject} onChange={this.handleChangeSubject} />
+          <br />
+          Message:
+          <br />
+          <input type="text" name="message" placeholder="Your message" value={message} onChange={this.handleChangeMessage} />
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
+      </article>
+    </div>);
   }
 }
 
